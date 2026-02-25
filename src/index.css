@@ -23,6 +23,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Dark mode */
+.dark body {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
 /* Safe area for notched devices */
 @supports (padding: env(safe-area-inset-bottom)) {
   body {

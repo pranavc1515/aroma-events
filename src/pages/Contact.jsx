@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SectionTitle from '../components/SectionTitle';
 import { AnimatedSection, AnimatedItem } from '../components/AnimatedSection';
+import { FORMS } from '../config/forms';
 
 /* ─── Contact information ─── */
 const contactInfo = [
@@ -65,10 +66,21 @@ const Contact = () => {
         const errs = validate();
         if (Object.keys(errs).length > 0) { setErrors(errs); return; }
         setLoading(true);
-        await new Promise((r) => setTimeout(r, 1000));
-        console.log('📨 Contact Form:', form);
+        try {
+            const res = await fetch(`https://formspree.io/f/${FORMS.contact}`, {
+                method: 'POST',
+                body: JSON.stringify(form),
+                headers: { 'Content-Type': 'application/json' },
+            });
+            if (res.ok) {
+                setSubmitted(true);
+            } else {
+                setErrors({ submit: 'Something went wrong. Please try again or WhatsApp us.' });
+            }
+        } catch {
+            setErrors({ submit: 'Network error. Please try again or WhatsApp us.' });
+        }
         setLoading(false);
-        setSubmitted(true);
     };
 
     return (
@@ -176,6 +188,12 @@ const Contact = () => {
 
                                     {/* Email */}
                                     <ContactField id="email" name="email" label="Email Address" type="email" placeholder="you@example.com" value={form.email} onChange={handleChange} error={errors.email} required />
+
+                                    {errors.submit && (
+                                        <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm font-poppins">
+                                            {errors.submit}
+                                        </div>
+                                    )}
 
                                     {/* Message */}
                                     <div>

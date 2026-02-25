@@ -1,0 +1,18 @@
+{
+  "name": "Aroma Events - Birthday Party Decoration Bangalore",
+  "short_name": "Aroma Events",
+  "description": "Bangalore's #1 Birthday Party Specialists. Kids, milestone & adult celebrations. 500+ parties delivered.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF2F3",
+  "theme_color": "#D4919B",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

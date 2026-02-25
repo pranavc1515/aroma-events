@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionTitle from '../components/SectionTitle';
+import Breadcrumbs from '../components/Breadcrumbs';
+import ImageSkeleton from '../components/ImageSkeleton';
 import { AnimatedSection, AnimatedItem } from '../components/AnimatedSection';
 
 /**
@@ -39,6 +41,7 @@ const filterTabs = [
 const Gallery = () => {
     const [activeFilter, setActiveFilter] = useState('all');
     const [selectedImage, setSelectedImage] = useState(null);
+    const [loadedIds, setLoadedIds] = useState(new Set());
 
     // Filter images based on active tab
     const filteredImages =
@@ -80,8 +83,10 @@ const Gallery = () => {
 
     return (
         <div className="pt-20 min-h-screen bg-white">
+            <Breadcrumbs items={[{ to: '/', label: 'Home' }, { label: 'Gallery' }]} />
+
             {/* Page Header */}
-            <div className="bg-blush py-12 sm:py-16">
+            <div className="bg-blush dark:bg-charcoal/50 py-12 sm:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <AnimatedSection>
 <SectionTitle
@@ -130,11 +135,15 @@ const Gallery = () => {
                             className="group relative rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer shadow-card hover:shadow-soft-lg"
                             style={{ aspectRatio: '1 / 1' }}
                         >
+                            {!loadedIds.has(img.id) && (
+                                <ImageSkeleton className="absolute inset-0 w-full h-full" />
+                            )}
                             <img
                                 src={img.src}
                                 alt={img.title}
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${loadedIds.has(img.id) ? 'opacity-100' : 'opacity-0'}`}
                                 loading="lazy"
+                                onLoad={() => setLoadedIds((prev) => new Set(prev).add(img.id))}
                             />
                             {/* Hover overlay */}
                             <div className="absolute inset-0 bg-charcoal/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import SectionTitle from '../components/SectionTitle';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { themes } from '../data/themes';
+import { FORMS } from '../config/forms';
 
 /* ─── Initial form state ─── */
 const initialForm = {
@@ -64,19 +65,38 @@ const BookNow = () => {
         const validationErrors = validate();
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
-            // Scroll to first error
             const firstErrorField = Object.keys(validationErrors)[0];
             document.getElementById(firstErrorField)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             return;
         }
 
-        // Simulate async submission
         setLoading(true);
-        await new Promise((res) => setTimeout(res, 1200));
-        console.log('📋 Booking Form Submission:', form);
+        try {
+            const res = await fetch(`https://formspree.io/f/${FORMS.book}`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    fullName: form.fullName,
+                    phone: form.phone,
+                    email: form.email,
+                    eventType: form.eventType,
+                    eventDate: form.eventDate,
+                    location: form.location,
+                    budgetRange: form.budgetRange,
+                    notes: form.notes,
+                    selectedTheme: form.selectedTheme,
+                }),
+                headers: { 'Content-Type': 'application/json' },
+            });
+            if (res.ok) {
+                setSubmitted(true);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                setErrors({ submit: 'Something went wrong. Please try again or WhatsApp us.' });
+            }
+        } catch {
+            setErrors({ submit: 'Network error. Please try again or WhatsApp us.' });
+        }
         setLoading(false);
-        setSubmitted(true);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const handleReset = () => {
@@ -215,17 +235,22 @@ const BookNow = () => {
 
                     {/* Row 3: Event Date + Location */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <FormField
-                            id="eventDate"
-                            name="eventDate"
-                            label="Event Date"
-                            type="date"
-                            value={form.eventDate}
-                            onChange={handleChange}
-                            error={errors.eventDate}
-                            required
-                            min={new Date().toISOString().split('T')[0]}
-                        />
+                        <div>
+                            <FormField
+                                id="eventDate"
+                                name="eventDate"
+                                label="Event Date"
+                                type="date"
+                                value={form.eventDate}
+                                onChange={handleChange}
+                                error={errors.eventDate}
+                                required
+                                min={new Date().toISOString().split('T')[0]}
+                            />
+                            <p className="mt-1.5 text-xs font-poppins text-gray-500 dark:text-gray-400">
+                                📅 Weekend slots fill fast — book 2–3 weeks ahead
+                            </p>
+                        </div>
                         <FormField
                             id="location"
                             name="location"
@@ -301,6 +326,13 @@ const BookNow = () => {
                             className="w-full px-4 py-3 rounded-xl border border-blush-dark focus:border-rose-gold font-poppins text-sm text-charcoal bg-white transition-colors duration-200 outline-none focus:ring-2 focus:ring-rose-gold/40 resize-none"
                         />
                     </div>
+
+                    {/* Submit error */}
+                    {errors.submit && (
+                        <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm font-poppins">
+                            {errors.submit}
+                        </div>
+                    )}
 
                     {/* Privacy note */}
                     <p className="text-xs font-poppins text-gray-400 text-center">

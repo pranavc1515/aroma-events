@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getThemeById, themes } from '../data/themes';
 import ThemeCard from '../components/ThemeCard';
+import ShareButtons from '../components/ShareButtons';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { AnimatedSection, AnimatedItem } from '../components/AnimatedSection';
 
 /**
@@ -46,16 +48,7 @@ const ThemeDetails = () => {
 
     return (
         <div className="pt-20 min-h-screen bg-white">
-            {/* Breadcrumb */}
-            <div className="bg-blush border-b border-blush-dark overflow-x-auto">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-2 text-xs sm:text-sm font-poppins min-w-0">
-                    <Link to="/" className="text-gray-400 hover:text-rose-gold-dark transition-colors whitespace-nowrap">Home</Link>
-                    <span className="text-gray-300 flex-shrink-0">/</span>
-                    <Link to="/gallery" className="text-gray-400 hover:text-rose-gold-dark transition-colors whitespace-nowrap">Gallery</Link>
-                    <span className="text-gray-300 flex-shrink-0">/</span>
-                    <span className="text-charcoal font-medium truncate">{theme.title}</span>
-                </div>
-            </div>
+            <Breadcrumbs items={[{ to: '/', label: 'Home' }, { to: '/gallery', label: 'Gallery' }, { label: theme.title }]} />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
                 <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-start">
@@ -133,6 +126,11 @@ const ThemeDetails = () => {
                                 <strong className="text-charcoal">Note:</strong> Prices vary by location and exact requirements.
                                 Contact us for a custom quote tailored to your event.
                             </p>
+                        </div>
+
+                        {/* Share */}
+                        <div className="mb-6">
+                            <ShareButtons title={theme.title} />
                         </div>
 
                         {/* CTA Buttons */}

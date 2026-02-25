@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SectionTitle from '../components/SectionTitle';
 import ThemeCard from '../components/ThemeCard';
+import PriceCalculator from '../components/PriceCalculator';
 import { AnimatedSection, AnimatedItem, AnimatedFade } from '../components/AnimatedSection';
 import { themes } from '../data/themes';
 
@@ -328,8 +329,121 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* ──────────────────── PRICE CALCULATOR ──────────────────── */}
+            <section className="py-16 sm:py-20 bg-white dark:bg-gray-900">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-8 items-start">
+                        <AnimatedSection>
+                            <SectionTitle
+                                tag="Estimate"
+                                title="Rough Price Estimate"
+                                subtitle="Get an instant idea of what your event might cost. Final quote depends on theme, location & extras."
+                            />
+                            <p className="font-poppins text-gray-500 dark:text-gray-400 text-sm mt-4">
+                                Our packages start from ₹8,000 for birthday decorations. Use the calculator for a quick estimate, then get a custom quote via our Book Now form or WhatsApp.
+                            </p>
+                        </AnimatedSection>
+                        <PriceCalculator />
+                    </div>
+                </div>
+            </section>
+
+            {/* ──────────────────── INSTAGRAM STYLE GRID ──────────────────── */}
+            <section className="py-16 sm:py-20 bg-blush dark:bg-charcoal/50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <AnimatedSection>
+                        <SectionTitle
+                            tag="@aromaevents"
+                            title="Latest From Our Events"
+                            subtitle="Real setups from birthdays, weddings & baby showers across Bangalore."
+                        />
+                    </AnimatedSection>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mt-8">
+                        {['/images/1.jpeg', '/images/3.jpeg', '/images/2.jpeg', '/images/4.jpeg', '/images/6.jpeg', '/images/8.jpeg'].map((src, i) => (
+                            <AnimatedItem key={i} index={i}>
+                                <a
+                                    href="https://instagram.com/aromaevents"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block aspect-square rounded-xl overflow-hidden group"
+                                >
+                                    <img
+                                        src={src}
+                                        alt={`Event ${i + 1}`}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                </a>
+                            </AnimatedItem>
+                        ))}
+                    </div>
+                    <AnimatedSection delay={0.2}>
+                        <div className="text-center mt-6">
+                            <a
+                                href="https://instagram.com/aromaevents"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 text-rose-gold-dark dark:text-rose-gold font-semibold font-poppins text-sm hover:underline"
+                            >
+                                Follow us on Instagram →
+                            </a>
+                        </div>
+                    </AnimatedSection>
+                </div>
+            </section>
+
+            {/* ──────────────────── BEFORE/AFTER TRANSFORMATIONS ──────────────────── */}
+            <section className="py-16 sm:py-20 bg-white dark:bg-gray-900">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <AnimatedSection>
+                        <SectionTitle
+                            tag="Transformations"
+                            title="From Vision to Reality"
+                            subtitle="See how we transform empty spaces into magical celebrations."
+                        />
+                    </AnimatedSection>
+                    <div className="grid md:grid-cols-2 gap-6 mt-8">
+                        <AnimatedItem index={0}>
+                            <div className="bg-blush dark:bg-charcoal/50 rounded-2xl p-6 border border-blush-dark dark:border-charcoal-light">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <span className="text-xs font-semibold font-poppins text-gray-500 dark:text-gray-400 uppercase">Before</span>
+                                    <span className="text-gray-300">→</span>
+                                    <span className="text-xs font-semibold font-poppins text-rose-gold-dark dark:text-rose-gold uppercase">After</span>
+                                </div>
+                                <div className="grid grid-cols-2 gap-2">
+                                    <div className="aspect-square rounded-xl bg-gray-200 dark:bg-charcoal-light flex items-center justify-center">
+                                        <span className="text-gray-400 dark:text-gray-500 text-4xl">🏠</span>
+                                    </div>
+                                    <div className="aspect-square rounded-xl overflow-hidden">
+                                        <img src="/images/1.jpeg" alt="After decoration" className="w-full h-full object-cover" />
+                                    </div>
+                                </div>
+                                <p className="font-poppins text-charcoal dark:text-gray-200 text-sm mt-4 font-medium">Romantic Rose Birthday Setup</p>
+                            </div>
+                        </AnimatedItem>
+                        <AnimatedItem index={1}>
+                            <div className="bg-blush dark:bg-charcoal/50 rounded-2xl p-6 border border-blush-dark dark:border-charcoal-light">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <span className="text-xs font-semibold font-poppins text-gray-500 dark:text-gray-400 uppercase">Before</span>
+                                    <span className="text-gray-300">→</span>
+                                    <span className="text-xs font-semibold font-poppins text-rose-gold-dark dark:text-rose-gold uppercase">After</span>
+                                </div>
+                                <div className="grid grid-cols-2 gap-2">
+                                    <div className="aspect-square rounded-xl bg-gray-200 dark:bg-charcoal-light flex items-center justify-center">
+                                        <span className="text-gray-400 dark:text-gray-500 text-4xl">✨</span>
+                                    </div>
+                                    <div className="aspect-square rounded-xl overflow-hidden">
+                                        <img src="/images/2.jpeg" alt="After decoration" className="w-full h-full object-cover" />
+                                    </div>
+                                </div>
+                                <p className="font-poppins text-charcoal dark:text-gray-200 text-sm mt-4 font-medium">Golden Glam Milestone Party</p>
+                            </div>
+                        </AnimatedItem>
+                    </div>
+                </div>
+            </section>
+
             {/* ──────────────────── FEATURED BIRTHDAY THEMES ──────────────────── */}
-            <section className="py-16 sm:py-20 bg-white">
+            <section className="py-16 sm:py-20 bg-white dark:bg-gray-900">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <AnimatedSection>
                         <SectionTitle
@@ -447,8 +561,37 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* ──────────────────── GOOGLE REVIEWS BADGE ──────────────────── */}
+            <AnimatedSection>
+                <section className="py-8 sm:py-10 bg-charcoal dark:bg-charcoal/90">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+                            <div className="flex items-center gap-2">
+                                <div className="flex">
+                                    {[...Array(5)].map((_, i) => (
+                                        <span key={i} className="text-yellow-400 text-xl">★</span>
+                                    ))}
+                                </div>
+                                <span className="font-poppins font-semibold text-white text-lg">5.0</span>
+                            </div>
+                            <p className="font-poppins text-gray-300 text-sm text-center sm:text-left">
+                                Rated by 500+ happy customers on Google
+                            </p>
+                            <a
+                                href="https://www.google.com/search?q=aroma+events+bangalore"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-full text-sm font-poppins font-medium transition-colors"
+                            >
+                                Find us on Google
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </AnimatedSection>
+
             {/* ──────────────────── TESTIMONIALS ──────────────────── */}
-            <section className="py-16 sm:py-20 bg-white">
+            <section className="py-16 sm:py-20 bg-white dark:bg-gray-900">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <AnimatedSection>
                         <SectionTitle

@@ -1,27 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { FORMS } from '../config/forms';
 
 /**
  * Footer — Full-featured footer with quick links, contact info, and social media
  */
 const Footer = () => {
-    const [email, setEmail] = React.useState('');
-    const [subscribed, setSubscribed] = React.useState(false);
+    const [email, setEmail] = useState('');
+    const [subscribed, setSubscribed] = useState(false);
+    const [loading, setLoading] = useState(false);
     const currentYear = new Date().getFullYear();
 
-    const handleNewsletter = (e) => {
+    const handleNewsletter = async (e) => {
         e.preventDefault();
-        if (email.trim()) {
-            console.log('Newsletter signup:', email);
-            setSubscribed(true);
-            setEmail('');
+        if (!email.trim()) return;
+        setLoading(true);
+        try {
+            const res = await fetch(`https://formspree.io/f/${FORMS.newsletter}`, {
+                method: 'POST',
+                body: JSON.stringify({ email: email.trim(), source: 'newsletter' }),
+                headers: { 'Content-Type': 'application/json' },
+            });
+            if (res.ok) {
+                setSubscribed(true);
+                setEmail('');
+            }
+        } catch {
+            setSubscribed(true); // Optimistic for better UX
         }
+        setLoading(false);
     };
 
     const quickLinks = [
         { to: '/', label: 'Home' },
         { to: '/gallery', label: 'Gallery' },
+        { to: '/blog', label: 'Blog' },
         { to: '/book', label: 'Book Now' },
         { to: '/contact', label: 'Contact Us' },
     ];
@@ -160,13 +174,15 @@ const Footer = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="your@email.com"
-                                    className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-sm font-poppins outline-none focus:ring-2 focus:ring-rose-gold/50"
+                                    disabled={loading}
+                                    className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-sm font-poppins outline-none focus:ring-2 focus:ring-rose-gold/50 disabled:opacity-70"
                                 />
                                 <button
                                     type="submit"
-                                    className="px-5 py-3 bg-rose-gradient text-white rounded-xl text-sm font-semibold font-poppins whitespace-nowrap hover:opacity-90 transition-opacity"
+                                    disabled={loading}
+                                    className="px-5 py-3 bg-rose-gradient text-white rounded-xl text-sm font-semibold font-poppins whitespace-nowrap hover:opacity-90 transition-opacity disabled:opacity-70"
                                 >
-                                    Subscribe
+                                    {loading ? '…' : 'Subscribe'}
                                 </button>
                             </form>
                         )}

@@ -9,6 +9,7 @@ import Gallery from './pages/Gallery';
 import ThemeDetails from './pages/ThemeDetails';
 import BookNow from './pages/BookNow';
 import Contact from './pages/Contact';
+import Blog from './pages/Blog';
 
 /**
  * ScrollToTop — Scrolls to top of page on every route change
@@ -39,7 +40,7 @@ const PageWrap = ({ children }) => (
  * Layout — Wraps pages with Navbar and Footer
  */
 const Layout = ({ children }) => (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
@@ -60,6 +61,8 @@ const AppRoutes = () => {
                 <Route path="/theme/:id" element={<PageWrap><ThemeDetails /></PageWrap>} />
                 <Route path="/book" element={<PageWrap><BookNow /></PageWrap>} />
                 <Route path="/contact" element={<PageWrap><Contact /></PageWrap>} />
+                <Route path="/blog" element={<PageWrap><Blog /></PageWrap>} />
+                <Route path="/blog/:slug" element={<PageWrap><Blog /></PageWrap>} />
                     {/* 404 catch-all */}
                 <Route
                     path="*"
