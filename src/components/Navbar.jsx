@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 /**
  * Navbar — Sticky navigation with mobile hamburger menu
@@ -106,10 +107,15 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu */}
-            <div
-                className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                    }`}
-            >
+            <AnimatePresence>
+            {isOpen && (
+                <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    className="md:hidden overflow-hidden"
+                >
                 <div className="bg-white/95 backdrop-blur-md border-t border-blush-dark px-4 py-4 space-y-1">
                     {navLinks.map((link) => (
                         <NavLink
@@ -128,12 +134,14 @@ const Navbar = () => {
                     ))}
                     <Link
                         to="/book"
-                        className="block mt-2 text-center bg-rose-gradient text-white px-5 py-3 rounded-xl text-sm font-semibold font-poppins shadow-soft"
+                        className="block mt-2 text-center bg-rose-gradient text-white px-5 py-3 rounded-xl text-sm font-semibold font-poppins shadow-soft min-h-[44px] flex items-center justify-center"
                     >
                         Book Now
                     </Link>
                 </div>
-            </div>
+                </motion.div>
+            )}
+            </AnimatePresence>
         </nav>
     );
 };

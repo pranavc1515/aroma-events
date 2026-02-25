@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -14,10 +15,24 @@ import Contact from './pages/Contact';
 const ScrollToTop = () => {
     const { pathname } = useLocation();
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'instant' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [pathname]);
     return null;
 };
+
+const pageVariants = {
+    initial: { opacity: 0, y: 12 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -12 },
+};
+
+const pageTransition = { duration: 0.4, ease: [0.22, 1, 0.36, 1] };
+
+const PageWrap = ({ children }) => (
+    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
+        {children}
+    </motion.div>
+);
 
 /**
  * Layout — Wraps pages with Navbar and Footer
@@ -33,21 +48,21 @@ const Layout = ({ children }) => (
 /**
  * App — Root application with full React Router setup
  */
-const App = () => {
+const AppRoutes = () => {
+    const location = useLocation();
     return (
-        <BrowserRouter>
-            <ScrollToTop />
-            <Layout>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/gallery" element={<Gallery />} />
-                    <Route path="/theme/:id" element={<ThemeDetails />} />
-                    <Route path="/book" element={<BookNow />} />
-                    <Route path="/contact" element={<Contact />} />
+        <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<PageWrap><Home /></PageWrap>} />
+                <Route path="/gallery" element={<PageWrap><Gallery /></PageWrap>} />
+                <Route path="/theme/:id" element={<PageWrap><ThemeDetails /></PageWrap>} />
+                <Route path="/book" element={<PageWrap><BookNow /></PageWrap>} />
+                <Route path="/contact" element={<PageWrap><Contact /></PageWrap>} />
                     {/* 404 catch-all */}
-                    <Route
-                        path="*"
-                        element={
+                <Route
+                    path="*"
+                    element={
+                        <PageWrap>
                             <div className="pt-32 pb-20 min-h-screen bg-blush flex flex-col items-center justify-center text-center px-4">
                                 <p className="font-playfair font-bold text-8xl text-rose-gold mb-4">404</p>
                                 <h1 className="font-playfair font-bold text-charcoal text-3xl mb-3">Page Not Found</h1>
@@ -61,12 +76,21 @@ const App = () => {
                                     Go Home
                                 </a>
                             </div>
-                        }
-                    />
-                </Routes>
-            </Layout>
-        </BrowserRouter>
+                        </PageWrap>
+                    }
+                />
+            </Routes>
+        </AnimatePresence>
     );
 };
+
+const App = () => (
+    <BrowserRouter>
+        <ScrollToTop />
+        <Layout>
+            <AppRoutes />
+        </Layout>
+    </BrowserRouter>
+);
 
 export default App;

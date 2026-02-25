@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import SectionTitle from '../components/SectionTitle';
+import { AnimatedSection } from '../components/AnimatedSection';
 import { themes } from '../data/themes';
 
 /* ─── Initial form state ─── */
@@ -131,17 +133,20 @@ const BookNow = () => {
     return (
         <div className="pt-20 min-h-screen bg-white">
             {/* Header */}
-            <div className="bg-blush py-16">
+            <div className="bg-blush py-12 sm:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <AnimatedSection>
                     <SectionTitle
                         tag="Get Started"
                         title="Book Your Dream Event"
                         subtitle="Fill in the details below and our team will reach out to craft a personalized experience just for you."
                     />
+                    </AnimatedSection>
                 </div>
             </div>
 
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+            <AnimatedSection delay={0.1}>
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
                 <form onSubmit={handleSubmit} noValidate className="space-y-6">
                     {/* Row 1: Full Name + Phone */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -322,6 +327,7 @@ const BookNow = () => {
                     </button>
                 </form>
             </div>
+            </AnimatedSection>
         </div>
     );
 };

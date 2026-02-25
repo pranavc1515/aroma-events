@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 /**
  * Footer — Full-featured footer with quick links, contact info, and social media
@@ -25,8 +26,8 @@ const Footer = () => {
     return (
         <footer className="bg-charcoal text-white">
             {/* Top Section */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 sm:pb-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
 
                     {/* Brand Column */}
                     <div className="lg:col-span-1">
@@ -50,16 +51,17 @@ const Footer = () => {
                                 { label: 'WhatsApp', icon: 'WA', href: 'https://wa.me/919971054664' },
                                 { label: 'Facebook', icon: 'FB', href: 'https://facebook.com' },
                             ].map((s) => (
-                                <a
+                                <motion.a
                                     key={s.label}
                                     href={s.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-9 h-9 rounded-full bg-white/10 hover:bg-rose-gold flex items-center justify-center text-xs font-bold font-poppins transition-all duration-200 hover:scale-110"
+                                    whileHover={{ scale: 1.1 }}
+                                    className="w-10 h-10 min-w-[40px] min-h-[40px] rounded-full bg-white/10 hover:bg-rose-gold flex items-center justify-center text-xs font-bold font-poppins transition-colors duration-200"
                                     aria-label={s.label}
                                 >
                                     {s.icon}
-                                </a>
+                                </motion.a>
                             ))}
                         </div>
                     </div>

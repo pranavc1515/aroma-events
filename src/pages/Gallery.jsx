@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import SectionTitle from '../components/SectionTitle';
+import { AnimatedSection, AnimatedItem } from '../components/AnimatedSection';
 
 /**
  * Gallery images mapped from the images folder
@@ -79,24 +81,27 @@ const Gallery = () => {
     return (
         <div className="pt-20 min-h-screen bg-white">
             {/* Page Header */}
-            <div className="bg-blush py-16">
+            <div className="bg-blush py-12 sm:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <SectionTitle
-                        tag="Our Portfolio"
-                        title="Gallery of Memories"
-                        subtitle="Browse through our curated collection of stunning event decorations and installations."
-                    />
+                    <AnimatedSection>
+                        <SectionTitle
+                            tag="Our Portfolio"
+                            title="Gallery of Memories"
+                            subtitle="Browse through our curated collection of stunning event decorations and installations."
+                        />
+                    </AnimatedSection>
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
                 {/* Filter Tabs */}
-                <div className="flex flex-wrap justify-center gap-3 mb-10">
+                <AnimatedSection>
+                <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10">
                     {filterTabs.map((tab) => (
                         <button
                             key={tab.key}
                             onClick={() => setActiveFilter(tab.key)}
-                            className={`px-6 py-2.5 rounded-full text-sm font-semibold font-poppins transition-all duration-200 ${activeFilter === tab.key
+                            className={`px-4 sm:px-6 py-2.5 rounded-full text-sm font-semibold font-poppins transition-all duration-200 min-h-[44px] ${activeFilter === tab.key
                                     ? 'bg-rose-gradient text-white shadow-soft'
                                     : 'bg-blush text-charcoal hover:bg-blush-dark'
                                 }`}
@@ -108,14 +113,21 @@ const Gallery = () => {
                         </button>
                     ))}
                 </div>
+                </AnimatedSection>
 
                 {/* Image Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {filteredImages.map((img) => (
-                        <div
-                            key={img.id}
+                <motion.div
+                    layout
+                    className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
+                >
+                    {filteredImages.map((img, i) => (
+                        <AnimatedItem key={img.id} index={i}>
+                        <motion.div
+                            layout
                             onClick={() => openModal(img)}
-                            className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-card hover:shadow-soft-lg transition-all duration-300 hover:-translate-y-1"
+                            whileHover={{ y: -4, scale: 1.02 }}
+                            transition={{ duration: 0.2 }}
+                            className="group relative rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer shadow-card hover:shadow-soft-lg"
                             style={{ aspectRatio: '1 / 1' }}
                         >
                             <img
@@ -136,9 +148,10 @@ const Gallery = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                                 </svg>
                             </div>
-                        </div>
+                        </motion.div>
+                        </AnimatedItem>
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Empty State */}
                 {filteredImages.length === 0 && (
@@ -149,13 +162,22 @@ const Gallery = () => {
             </div>
 
             {/* ─────────── Modal ─────────── */}
+            <AnimatePresence>
             {selectedImage && (
-                <div
-                    className="fixed inset-0 z-50 bg-charcoal/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="fixed inset-0 z-50 bg-charcoal/95 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4"
                     onClick={closeModal}
                 >
-                    <div
-                        className="relative max-w-4xl w-full max-h-[90vh] rounded-2xl overflow-hidden shadow-soft-lg"
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                        className="relative max-w-4xl w-full max-h-[90vh] rounded-xl sm:rounded-2xl overflow-hidden shadow-soft-lg"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Image */}
@@ -197,9 +219,10 @@ const Gallery = () => {
                         >
                             ›
                         </button>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             )}
+            </AnimatePresence>
         </div>
     );
 };

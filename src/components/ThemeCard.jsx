@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 /**
  * ThemeCard — Reusable card for displaying a decoration theme
@@ -21,9 +22,10 @@ const ThemeCard = ({ theme, compact = false }) => {
     };
 
     return (
-        <Link
-            to={`/theme/${theme.id}`}
-            className={`group block bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-soft-lg transition-all duration-300 hover:-translate-y-1 ${compact ? 'h-72' : 'h-80'
+        <Link to={`/theme/${theme.id}`} className="block h-full">
+        <motion.div
+            whileHover={{ y: -6, transition: { duration: 0.25 } }}
+            className={`group flex flex-col bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-card hover:shadow-soft-lg transition-shadow duration-300 h-full ${compact ? 'min-h-[280px]' : 'min-h-[320px]'
                 }`}
         >
             {/* Image Section */}
@@ -96,6 +98,7 @@ const ThemeCard = ({ theme, compact = false }) => {
                     </div>
                 </div>
             </div>
+        </motion.div>
         </Link>
     );
 };

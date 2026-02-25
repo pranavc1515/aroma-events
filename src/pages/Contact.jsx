@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SectionTitle from '../components/SectionTitle';
+import { AnimatedSection, AnimatedItem } from '../components/AnimatedSection';
 
 /* ─── Contact information ─── */
 const contactInfo = [
@@ -83,10 +84,11 @@ const Contact = () => {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-                <div className="grid lg:grid-cols-2 gap-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+                <div className="grid lg:grid-cols-2 gap-10 sm:gap-12">
 
                     {/* ─── Left: Contact Info ─── */}
+                    <AnimatedSection>
                     <div>
                         <h2 className="font-playfair font-bold text-charcoal text-2xl mb-2">
                             Contact Information
@@ -98,10 +100,10 @@ const Contact = () => {
                         </p>
 
                         {/* Contact Cards */}
-                        <div className="space-y-4 mb-10">
-                            {contactInfo.map((item) => (
+                        <div className="space-y-4 mb-8 sm:mb-10">
+                            {contactInfo.map((item, i) => (
+                                <AnimatedItem key={item.title} index={i}>
                                 <a
-                                    key={item.title}
                                     href={item.href}
                                     target={item.href.startsWith('http') ? '_blank' : undefined}
                                     rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -117,6 +119,7 @@ const Contact = () => {
                                     </div>
                                     <div className="ml-auto text-gray-300 group-hover:text-rose-gold transition-colors duration-200">→</div>
                                 </a>
+                                </AnimatedItem>
                             ))}
                         </div>
 
@@ -129,9 +132,11 @@ const Contact = () => {
                             </div>
                         </div>
                     </div>
+                    </AnimatedSection>
 
                     {/* ─── Right: Contact Form ─── */}
-                    <div className="bg-blush rounded-3xl p-8">
+                    <AnimatedSection delay={0.15}>
+                    <div className="bg-blush rounded-2xl sm:rounded-3xl p-6 sm:p-8">
                         {submitted ? (
                             <div className="text-center py-10 animate-fade-in">
                                 <div className="w-16 h-16 bg-rose-gradient rounded-full flex items-center justify-center text-2xl mx-auto mb-4 shadow-soft">
@@ -202,6 +207,7 @@ const Contact = () => {
                             </>
                         )}
                     </div>
+                    </AnimatedSection>
                 </div>
             </div>
         </div>

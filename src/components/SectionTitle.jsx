@@ -17,7 +17,7 @@ const SectionTitle = ({
     tag,
 }) => {
     return (
-        <div className={`mb-10 ${centered ? 'text-center' : 'text-left'}`}>
+        <div className={`mb-8 sm:mb-10 ${centered ? 'text-center' : 'text-left'}`}>
             {/* Tag label */}
             {tag && (
                 <span
@@ -32,7 +32,7 @@ const SectionTitle = ({
 
             {/* Main Heading */}
             <h2
-                className={`font-playfair font-bold text-3xl md:text-4xl lg:text-5xl leading-tight ${light ? 'text-white' : 'text-charcoal'
+                className={`font-playfair font-bold text-2xl xs:text-3xl sm:text-4xl lg:text-5xl leading-tight ${light ? 'text-white' : 'text-charcoal'
                     }`}
             >
                 {title}

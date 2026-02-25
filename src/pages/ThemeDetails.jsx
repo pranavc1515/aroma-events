@@ -1,7 +1,9 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { getThemeById, themes } from '../data/themes';
 import ThemeCard from '../components/ThemeCard';
+import { AnimatedSection, AnimatedItem } from '../components/AnimatedSection';
 
 /**
  * ThemeDetails — Dynamic page showing full details of a single theme
@@ -55,10 +57,11 @@ const ThemeDetails = () => {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+                <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-start">
 
                     {/* ─── Left: Image ─── */}
+                    <AnimatedSection>
                     <div className="relative">
                         <div className="relative rounded-3xl overflow-hidden shadow-soft-lg aspect-[4/3]">
                             <img
@@ -88,8 +91,10 @@ const ThemeDetails = () => {
                             <p className="font-playfair font-bold text-rose-gold-dark text-2xl">{theme.price}</p>
                         </div>
                     </div>
+                    </AnimatedSection>
 
                     {/* ─── Right: Details ─── */}
+                    <AnimatedSection delay={0.15}>
                     <div className="lg:pt-4">
                         <h1 className="font-playfair font-bold text-charcoal text-3xl md:text-4xl leading-tight mb-4">
                             {theme.title}
@@ -148,21 +153,26 @@ const ThemeDetails = () => {
                             </a>
                         </div>
                     </div>
+                    </AnimatedSection>
                 </div>
 
                 {/* ─── Related Themes ─── */}
                 {relatedThemes.length > 0 && (
-                    <div className="mt-20">
-                        <h2 className="font-playfair font-bold text-charcoal text-3xl mb-2">
+                    <AnimatedSection>
+                    <div className="mt-16 sm:mt-20">
+                        <h2 className="font-playfair font-bold text-charcoal text-2xl sm:text-3xl mb-2">
                             You May Also Like
                         </h2>
-                        <div className="w-12 h-1 bg-rose-gradient rounded-full mb-8" />
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                            {relatedThemes.map((t) => (
-                                <ThemeCard key={t.id} theme={t} compact />
+                        <div className="w-12 h-1 bg-rose-gradient rounded-full mb-6 sm:mb-8" />
+                        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+                            {relatedThemes.map((t, i) => (
+                                <AnimatedItem key={t.id} index={i}>
+                                    <ThemeCard theme={t} compact />
+                                </AnimatedItem>
                             ))}
                         </div>
                     </div>
+                    </AnimatedSection>
                 )}
 
                 {/* Back Button */}
