@@ -97,8 +97,8 @@ const Contact = () => {
                         </h2>
                         <div className="w-12 h-1 bg-rose-gradient rounded-full mb-6" />
                         <p className="font-poppins text-gray-500 text-sm leading-relaxed mb-8">
-                            Whether you're planning a birthday bash, a fairy-tale wedding, or a sweet baby shower,
-                            our team is ready to help you create something truly magical.
+                            Based in Bangalore, we serve Koramangala, Indiranagar, Whitefield, and across Karnataka.
+                            Whether you're planning a birthday bash, a fairy-tale wedding, or a sweet baby shower — we're here to help.
                         </p>
 
                         {/* Contact Cards */}
@@ -129,8 +129,8 @@ const Contact = () => {
                         <div className="rounded-2xl overflow-hidden shadow-card bg-blush-dark h-48 flex items-center justify-center">
                             <div className="text-center">
                                 <p className="text-3xl mb-2">📍</p>
-                                <p className="font-poppins font-semibold text-charcoal text-sm">Mumbai, Maharashtra</p>
-                                <p className="font-poppins text-gray-400 text-xs">Serving all locations</p>
+                                <p className="font-poppins font-semibold text-charcoal text-sm">Bangalore, Karnataka</p>
+                                <p className="font-poppins text-gray-400 text-xs">Serving Bangalore & nearby areas</p>
                             </div>
                         </div>
                     </div>

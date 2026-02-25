@@ -139,7 +139,7 @@ const BookNow = () => {
                     <SectionTitle
                         tag="Get Started"
                         title="Book Your Dream Event"
-                        subtitle="Fill in the details below and our team will reach out to craft a personalized experience just for you."
+                        subtitle="Fill in the details below and our team will reach out within 24 hours. We serve Bangalore and nearby areas."
                     />
                     </AnimatedSection>
                 </div>
@@ -231,7 +231,7 @@ const BookNow = () => {
                             name="location"
                             label="Event Location"
                             type="text"
-                            placeholder="e.g. Mumbai, Andheri West"
+                            placeholder="e.g. Bangalore, Koramangala"
                             value={form.location}
                             onChange={handleChange}
                             error={errors.location}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SectionTitle from '../components/SectionTitle';
@@ -32,6 +32,29 @@ const testimonials = [
         text: 'The pastel cloud theme for my baby shower was so cute and elegant. All my guests loved it. The setup was done perfectly on time and looked exactly like the photos!',
         avatar: '/images/10.jpeg',
     },
+];
+
+/* ─── About / Service Areas ─── */
+const serviceAreas = [
+    'Koramangala', 'Indiranagar', 'Whitefield', 'HSR Layout', 'JP Nagar',
+    'Electronic City', 'Marathahalli', 'BTM Layout', 'Jayanagar', 'MG Road',
+];
+
+/* ─── How It Works ─── */
+const howItWorks = [
+    { step: 1, icon: '💬', title: 'Share Your Vision', desc: 'Tell us about your event — date, theme, and budget. We\'ll schedule a quick call or chat.' },
+    { step: 2, icon: '🎨', title: 'Pick a Theme', desc: 'Browse our gallery and choose from 8+ stunning themes, or share your custom idea.' },
+    { step: 3, icon: '📅', title: 'Confirm & Plan', desc: 'We\'ll share a tailored quote. Confirm your booking with a small advance.' },
+    { step: 4, icon: '🎉', title: 'We Decorate', desc: 'Our team arrives on time, sets up everything, and ensures your venue looks magical.' },
+];
+
+/* ─── FAQ ─── */
+const faqs = [
+    { q: 'Which areas in Bangalore do you serve?', a: 'We serve all of Bangalore including Koramangala, Indiranagar, Whitefield, HSR Layout, JP Nagar, Electronic City, Marathahalli, BTM Layout, Jayanagar, MG Road, and nearby areas in Karnataka.' },
+    { q: 'How far in advance should I book?', a: 'We recommend booking at least 2–3 weeks ahead for weekends and peak seasons. For last-minute requests, call or WhatsApp us — we may still have availability.' },
+    { q: 'What\'s included in the decoration package?', a: 'Packages typically include balloons, backdrops, floral arrangements, table decor, props, and setup. Exact items vary by theme — check each theme\'s "What\'s Included" list.' },
+    { q: 'Do you offer custom themes?', a: 'Yes! Share your vision, color palette, or reference images, and we\'ll create a bespoke theme just for you.' },
+    { q: 'How do I confirm my booking?', a: 'Fill the Book Now form or WhatsApp us. We\'ll share a quote and bank details. A 30–50% advance secures your date.' },
 ];
 
 /* ─── Why Choose Us data ─── */
@@ -69,10 +92,10 @@ const whyChooseUs = [
 ];
 
 /**
- * Home — Landing page with hero, featured themes, why choose us, testimonials, CTA
+ * Home — Landing page with hero, about, featured themes, process, why choose us, testimonials, FAQ, CTA
  */
 const Home = () => {
-    // Show first 4 themes as featured
+    const [openFaq, setOpenFaq] = useState(null);
     const featuredThemes = themes.slice(0, 4);
 
     return (
@@ -190,7 +213,7 @@ const Home = () => {
                                 <span className="text-2xl">🎉</span>
                                 <div>
                                     <p className="font-playfair font-bold text-charcoal text-sm">500+ Happy Clients</p>
-                                    <p className="font-poppins text-gray-500 text-xs">Across Maharashtra</p>
+                                    <p className="font-poppins text-gray-500 text-xs">Across Bangalore & Karnataka</p>
                                 </div>
                             </motion.div>
                         </div>
@@ -204,6 +227,38 @@ const Home = () => {
                     </svg>
                 </div>
             </section>
+
+            {/* ──────────────────── ABOUT US ──────────────────── */}
+            <AnimatedSection>
+                <section className="py-16 sm:py-20 bg-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <SectionTitle tag="About Us" title="Your Partner for Memorable Events in Bangalore" subtitle="" centered={false} />
+                                <p className="font-poppins text-gray-500 text-base leading-relaxed mb-6">
+                                    Aroma Events is a Bangalore-based event decoration studio passionate about turning your celebrations into magical experiences. From intimate birthday parties to grand weddings and dreamy baby showers — we bring elegance, creativity, and attention to detail to every event.
+                                </p>
+                                <p className="font-poppins text-gray-500 text-base leading-relaxed mb-8">
+                                    With 500+ successful events across Karnataka, we understand what makes an occasion unforgettable. Our team works closely with you to bring your vision to life, on time and within budget.
+                                </p>
+                                <Link to="/contact" className="inline-flex items-center gap-2 text-rose-gold-dark font-semibold font-poppins text-sm hover:text-rose-gold transition-colors">
+                                    Get in touch →
+                                </Link>
+                            </div>
+                            <div>
+                                <h3 className="font-playfair font-bold text-charcoal text-lg mb-4">We serve across Bangalore</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {serviceAreas.map((area, i) => (
+                                        <span key={i} className="px-4 py-2 bg-blush text-charcoal-light rounded-full text-sm font-poppins">
+                                            {area}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </AnimatedSection>
 
             {/* ──────────────────── FEATURED THEMES ──────────────────── */}
             <section className="py-16 sm:py-20 bg-white">
@@ -234,6 +289,33 @@ const Home = () => {
                             </Link>
                         </div>
                     </AnimatedSection>
+                </div>
+            </section>
+
+            {/* ──────────────────── HOW IT WORKS ──────────────────── */}
+            <section className="py-16 sm:py-20 bg-blush">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <AnimatedSection>
+                        <SectionTitle
+                            tag="Simple Process"
+                            title="How It Works"
+                            subtitle="From first chat to final setup — we make booking effortless."
+                        />
+                    </AnimatedSection>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                        {howItWorks.map((item, i) => (
+                            <AnimatedItem key={i} index={i}>
+                                <div className="relative bg-white rounded-2xl p-6 shadow-card text-center">
+                                    <div className="w-14 h-14 bg-rose-gradient rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 shadow-soft">
+                                        {item.icon}
+                                    </div>
+                                    <span className="absolute -top-2 -right-2 w-8 h-8 bg-rose-gold text-white rounded-full flex items-center justify-center text-sm font-bold font-poppins">{item.step}</span>
+                                    <h3 className="font-playfair font-bold text-charcoal text-lg mb-2">{item.title}</h3>
+                                    <p className="font-poppins text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                                </div>
+                            </AnimatedItem>
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -314,6 +396,41 @@ const Home = () => {
                                 </div>
                             </motion.div>
                         </AnimatedItem>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ──────────────────── FAQ ──────────────────── */}
+            <section className="py-16 sm:py-20 bg-blush">
+                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <AnimatedSection>
+                        <SectionTitle
+                            tag="FAQ"
+                            title="Frequently Asked Questions"
+                            subtitle="Quick answers to common questions about our event decoration services."
+                        />
+                    </AnimatedSection>
+                    <div className="space-y-3">
+                        {faqs.map((faq, i) => (
+                            <AnimatedItem key={i} index={i}>
+                                <div
+                                    className={`bg-white rounded-xl shadow-card overflow-hidden transition-all duration-200 ${openFaq === i ? 'shadow-soft' : ''}`}
+                                >
+                                    <button
+                                        onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                                        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-poppins font-semibold text-charcoal hover:bg-blush/50 transition-colors"
+                                    >
+                                        <span className="text-sm sm:text-base">{faq.q}</span>
+                                        <span className={`text-rose-gold-dark text-xl flex-shrink-0 transition-transform duration-200 ${openFaq === i ? 'rotate-45' : ''}`}>+</span>
+                                    </button>
+                                    {openFaq === i && (
+                                        <div className="px-5 pb-4">
+                                            <p className="font-poppins text-gray-500 text-sm leading-relaxed border-t border-blush-dark pt-3">{faq.a}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </AnimatedItem>
                         ))}
                     </div>
                 </div>

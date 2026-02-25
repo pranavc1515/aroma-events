@@ -41,8 +41,8 @@ const Footer = () => {
                             </div>
                         </Link>
                         <p className="text-gray-400 text-sm font-poppins leading-relaxed mb-5">
-                            Crafting beautiful memories through elegant event decoration.
-                            Every celebration deserves to be extraordinary.
+                            Premium event decoration in Bangalore & Karnataka.
+                            Crafting beautiful memories through elegant themes.
                         </p>
                         {/* Social Icons */}
                         <div className="flex gap-3">
@@ -97,6 +97,9 @@ const Footer = () => {
                                 </li>
                             ))}
                         </ul>
+                        <p className="text-gray-500 text-xs font-poppins mt-4">
+                            📍 Bangalore • Karnataka
+                        </p>
                     </div>
 
                     {/* Contact */}
@@ -107,7 +110,7 @@ const Footer = () => {
                                 { icon: '📞', text: 'Kapil: +91 99710 54664', href: 'tel:+919971054664' },
                                 { icon: '📧', text: 'hello@aromaevents.in', href: 'mailto:hello@aromaevents.in' },
                                 { icon: '💬', text: 'WhatsApp (Kapil)', href: 'https://wa.me/919971054664' },
-                                { icon: '📍', text: 'Mumbai, Maharashtra', href: null },
+                                { icon: '📍', text: 'Bangalore, Karnataka', href: null },
                             ].map((item, i) => (
                                 <li key={i}>
                                     {item.href ? (
@@ -136,9 +139,14 @@ const Footer = () => {
             {/* Bottom Bar */}
             <div className="border-t border-white/10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-                    <p className="text-gray-500 text-xs font-poppins text-center sm:text-left">
-                        © {currentYear} Aroma Events. All rights reserved. Crafted with ❤️
-                    </p>
+                    <div className="text-center sm:text-left">
+                        <p className="text-gray-500 text-xs font-poppins">
+                            © {currentYear} Aroma Events. Bangalore, Karnataka. Crafted with ❤️
+                        </p>
+                        <p className="text-gray-600 text-[10px] font-poppins mt-1">
+                            UPI • Card • Cash accepted
+                        </p>
+                    </div>
                     <div className="flex gap-4">
                         <Link to="/contact" className="text-gray-500 hover:text-rose-gold text-xs font-poppins transition-colors duration-200">
                             Privacy Policy
