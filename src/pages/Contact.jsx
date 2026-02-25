@@ -6,9 +6,9 @@ const contactInfo = [
     {
         icon: '📞',
         title: 'Phone',
-        value: '+91 98765 43210',
-        href: 'tel:+919876543210',
-        desc: 'Mon–Sat, 9 AM – 8 PM',
+        value: '+91 99710 54664',
+        href: 'tel:+919971054664',
+        desc: 'Kapil — Support & Sales',
     },
     {
         icon: '📧',
@@ -20,9 +20,9 @@ const contactInfo = [
     {
         icon: '💬',
         title: 'WhatsApp',
-        value: '+91 98765 43210',
-        href: 'https://wa.me/919876543210',
-        desc: 'Fastest way to reach us',
+        value: '+91 99710 54664',
+        href: 'https://wa.me/919971054664',
+        desc: 'Kapil — Support & Sales',
     },
     {
         icon: '📸',
@@ -157,7 +157,7 @@ const Contact = () => {
                                     {/* Name + Phone */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <ContactField id="name" name="name" label="Your Name" type="text" placeholder="Priya Sharma" value={form.name} onChange={handleChange} error={errors.name} required />
-                                        <ContactField id="phone" name="phone" label="Phone (Optional)" type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={handleChange} />
+                                        <ContactField id="phone" name="phone" label="Phone (Optional)" type="tel" placeholder="+91 99710 54664" value={form.phone} onChange={handleChange} />
                                     </div>
 
                                     {/* Email */}

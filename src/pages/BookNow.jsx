@@ -115,7 +115,7 @@ const BookNow = () => {
                             Submit Another Booking
                         </button>
                         <a
-                            href="https://wa.me/919876543210"
+                            href="https://wa.me/919971054664"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 bg-charcoal text-white px-8 py-3 rounded-2xl text-sm font-semibold font-poppins hover:bg-charcoal-light transition-all duration-200"
@@ -161,7 +161,7 @@ const BookNow = () => {
                             name="phone"
                             label="Phone Number"
                             type="tel"
-                            placeholder="e.g. +91 98765 43210"
+                            placeholder="e.g. +91 99710 54664"
                             value={form.phone}
                             onChange={handleChange}
                             error={errors.phone}

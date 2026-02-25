@@ -304,7 +304,7 @@ const Home = () => {
                             Book Your Event Now
                         </Link>
                         <a
-                            href="https://wa.me/919876543210"
+                            href="https://wa.me/919971054664"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-8 py-4 rounded-2xl text-sm font-semibold font-poppins hover:bg-white/20 transition-all duration-200"

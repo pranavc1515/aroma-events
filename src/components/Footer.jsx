@@ -47,7 +47,7 @@ const Footer = () => {
                         <div className="flex gap-3">
                             {[
                                 { label: 'Instagram', icon: 'IG', href: 'https://instagram.com' },
-                                { label: 'WhatsApp', icon: 'WA', href: 'https://wa.me/919876543210' },
+                                { label: 'WhatsApp', icon: 'WA', href: 'https://wa.me/919971054664' },
                                 { label: 'Facebook', icon: 'FB', href: 'https://facebook.com' },
                             ].map((s) => (
                                 <a
@@ -102,9 +102,9 @@ const Footer = () => {
                         <h4 className="font-playfair font-semibold text-white text-lg mb-5">Get In Touch</h4>
                         <ul className="space-y-3">
                             {[
-                                { icon: '📞', text: '+91 98765 43210', href: 'tel:+919876543210' },
+                                { icon: '📞', text: 'Kapil: +91 99710 54664', href: 'tel:+919971054664' },
                                 { icon: '📧', text: 'hello@aromaevents.in', href: 'mailto:hello@aromaevents.in' },
-                                { icon: '💬', text: 'WhatsApp Us', href: 'https://wa.me/919876543210' },
+                                { icon: '💬', text: 'WhatsApp (Kapil)', href: 'https://wa.me/919971054664' },
                                 { icon: '📍', text: 'Mumbai, Maharashtra', href: null },
                             ].map((item, i) => (
                                 <li key={i}>
