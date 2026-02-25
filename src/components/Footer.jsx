@@ -6,7 +6,18 @@ import { motion } from 'framer-motion';
  * Footer — Full-featured footer with quick links, contact info, and social media
  */
 const Footer = () => {
+    const [email, setEmail] = React.useState('');
+    const [subscribed, setSubscribed] = React.useState(false);
     const currentYear = new Date().getFullYear();
+
+    const handleNewsletter = (e) => {
+        e.preventDefault();
+        if (email.trim()) {
+            console.log('Newsletter signup:', email);
+            setSubscribed(true);
+            setEmail('');
+        }
+    };
 
     const quickLinks = [
         { to: '/', label: 'Home' },
@@ -132,6 +143,33 @@ const Footer = () => {
                                 </li>
                             ))}
                         </ul>
+                    </div>
+                </div>
+
+                {/* Newsletter */}
+                <div className="mt-12 pt-10 border-t border-white/10">
+                    <div className="max-w-md">
+                        <h4 className="font-playfair font-semibold text-white text-lg mb-2">Stay Updated</h4>
+                        <p className="text-gray-400 text-sm font-poppins mb-4">Get tips, offers & event ideas in your inbox.</p>
+                        {subscribed ? (
+                            <p className="text-rose-gold text-sm font-poppins">✓ Thanks for subscribing!</p>
+                        ) : (
+                            <form onSubmit={handleNewsletter} className="flex gap-2">
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="your@email.com"
+                                    className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-sm font-poppins outline-none focus:ring-2 focus:ring-rose-gold/50"
+                                />
+                                <button
+                                    type="submit"
+                                    className="px-5 py-3 bg-rose-gradient text-white rounded-xl text-sm font-semibold font-poppins whitespace-nowrap hover:opacity-90 transition-opacity"
+                                >
+                                    Subscribe
+                                </button>
+                            </form>
+                        )}
                     </div>
                 </div>
             </div>

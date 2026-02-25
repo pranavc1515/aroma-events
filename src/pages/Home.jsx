@@ -48,6 +48,14 @@ const howItWorks = [
     { step: 4, icon: '🎉', title: 'We Decorate', desc: 'Our team arrives on time, sets up everything, and ensures your venue looks magical.' },
 ];
 
+/* ─── Event Planning Tips ─── */
+const eventTips = [
+    { icon: '📅', title: 'Book Early', desc: 'Weekends & peak seasons fill fast. Book 2–3 weeks ahead for the best themes.' },
+    { icon: '🎨', title: 'Pick a Color Palette', desc: 'Choose 2–3 main colors. It makes décor cohesive and photo-perfect.' },
+    { icon: '📸', title: 'Share Reference Pics', desc: 'Send us Pinterest or Instagram ideas. We\'ll bring your vision to life.' },
+    { icon: '⏰', title: 'Plan Setup Time', desc: 'Allow 2–4 hours before the event for setup. We\'ll be in & out smoothly.' },
+];
+
 /* ─── FAQ ─── */
 const faqs = [
     { q: 'Which areas in Bangalore do you serve?', a: 'We serve all of Bangalore including Koramangala, Indiranagar, Whitefield, HSR Layout, JP Nagar, Electronic City, Marathahalli, BTM Layout, Jayanagar, MG Road, and nearby areas in Karnataka.' },
@@ -228,6 +236,24 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* ──────────────────── SPECIAL OFFER BANNER ──────────────────── */}
+            <AnimatedSection>
+                <div className="bg-rose-gradient py-4 sm:py-5">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                        <div>
+                            <p className="font-playfair font-bold text-white text-lg sm:text-xl">🎉 Limited Time Offer</p>
+                            <p className="font-poppins text-white/90 text-sm">Book 2 weeks in advance & get 5% off your decoration package!</p>
+                        </div>
+                        <Link
+                            to="/book"
+                            className="inline-flex items-center justify-center gap-2 bg-white text-rose-gold-dark px-6 py-3 rounded-xl text-sm font-semibold font-poppins shadow-soft hover:shadow-lg transition-all whitespace-nowrap"
+                        >
+                            Book Now & Save
+                        </Link>
+                    </div>
+                </div>
+            </AnimatedSection>
+
             {/* ──────────────────── ABOUT US ──────────────────── */}
             <AnimatedSection>
                 <section className="py-16 sm:py-20 bg-white">
@@ -312,6 +338,32 @@ const Home = () => {
                                     <span className="absolute -top-2 -right-2 w-8 h-8 bg-rose-gold text-white rounded-full flex items-center justify-center text-sm font-bold font-poppins">{item.step}</span>
                                     <h3 className="font-playfair font-bold text-charcoal text-lg mb-2">{item.title}</h3>
                                     <p className="font-poppins text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                                </div>
+                            </AnimatedItem>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ──────────────────── EVENT PLANNING TIPS ──────────────────── */}
+            <section className="py-16 sm:py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <AnimatedSection>
+                        <SectionTitle
+                            tag="Pro Tips"
+                            title="Event Planning Tips"
+                            subtitle="Quick tips to make your event planning smooth and stress-free."
+                        />
+                    </AnimatedSection>
+                    <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                        {eventTips.map((tip, i) => (
+                            <AnimatedItem key={i} index={i}>
+                                <div className="bg-blush rounded-2xl p-5 sm:p-6 border border-blush-dark/50 hover:border-rose-gold/30 transition-colors">
+                                    <div className="w-12 h-12 bg-rose-gold/20 rounded-xl flex items-center justify-center text-2xl mb-4">
+                                        {tip.icon}
+                                    </div>
+                                    <h3 className="font-playfair font-bold text-charcoal text-base mb-2">{tip.title}</h3>
+                                    <p className="font-poppins text-gray-500 text-sm leading-relaxed">{tip.desc}</p>
                                 </div>
                             </AnimatedItem>
                         ))}

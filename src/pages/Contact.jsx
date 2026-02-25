@@ -125,14 +125,21 @@ const Contact = () => {
                             ))}
                         </div>
 
-                        {/* Map placeholder */}
-                        <div className="rounded-2xl overflow-hidden shadow-card bg-blush-dark h-48 flex items-center justify-center">
-                            <div className="text-center">
-                                <p className="text-3xl mb-2">📍</p>
-                                <p className="font-poppins font-semibold text-charcoal text-sm">Bangalore, Karnataka</p>
-                                <p className="font-poppins text-gray-400 text-xs">Serving Bangalore & nearby areas</p>
-                            </div>
+                        {/* Google Maps */}
+                        <div className="rounded-2xl overflow-hidden shadow-card h-48 sm:h-56">
+                            <iframe
+                                title="Aroma Events - Bangalore"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497698.6600700944!2d77.3507!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!2zQmVuZ2FsdXJ1LCBLYXJuYXRha2E!5e0!3m2!1sen!2sin!4v1709123456789!5m2!1sen!2sin"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                className="w-full h-full min-h-[192px]"
+                            />
                         </div>
+                        <p className="font-poppins text-gray-400 text-xs mt-2">📍 Bangalore, Karnataka • Serving all areas</p>
                     </div>
                     </AnimatedSection>
 

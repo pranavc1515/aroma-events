@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WhatsAppFloating from './components/WhatsAppFloating';
 import Home from './pages/Home';
 import Gallery from './pages/Gallery';
 import ThemeDetails from './pages/ThemeDetails';
@@ -42,6 +43,7 @@ const Layout = ({ children }) => (
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WhatsAppFloating />
     </div>
 );
 
