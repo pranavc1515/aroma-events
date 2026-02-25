@@ -84,11 +84,11 @@ const Gallery = () => {
             <div className="bg-blush py-12 sm:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <AnimatedSection>
-                        <SectionTitle
-                            tag="Our Portfolio"
-                            title="Gallery of Memories"
-                            subtitle="Browse through our curated collection of stunning event decorations and installations."
-                        />
+<SectionTitle
+                        tag="Our Portfolio"
+                        title="Birthday Party Gallery"
+                        subtitle="Browse our birthday setups — kids parties, milestone celebrations & themed decorations across Bangalore."
+                    />
                     </AnimatedSection>
                 </div>
             </div>

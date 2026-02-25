@@ -27,11 +27,11 @@ const Footer = () => {
     ];
 
     const categories = [
-        'Birthday Decoration',
-        'Wedding Decoration',
-        'Baby Shower Setup',
-        'Corporate Events',
-        'Anniversary Parties',
+        'Kids Birthday Parties',
+        '1st Birthday Setup',
+        'Milestone Birthdays',
+        'Balloon Installations',
+        'Wedding & Baby Shower',
     ];
 
     return (
@@ -52,8 +52,8 @@ const Footer = () => {
                             </div>
                         </Link>
                         <p className="text-gray-400 text-sm font-poppins leading-relaxed mb-5">
-                            Premium event decoration in Bangalore & Karnataka.
-                            Crafting beautiful memories through elegant themes.
+                            Bangalore's birthday party specialists. Kids, milestone & adult celebrations.
+                            500+ parties delivered. Get your FREE quote today.
                         </p>
                         {/* Social Icons */}
                         <div className="flex gap-3">

@@ -79,8 +79,8 @@ const Contact = () => {
                     <AnimatedSection>
                         <SectionTitle
                             tag="Get In Touch"
-                            title="Let's Talk About Your Event"
-                            subtitle="Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+                            title="Let's Plan Your Birthday Party"
+                            subtitle="Fill the form for a FREE quote. We reply within 24 hours. Or call/WhatsApp us for instant help."
                         />
                     </AnimatedSection>
                 </div>
@@ -97,8 +97,8 @@ const Contact = () => {
                         </h2>
                         <div className="w-12 h-1 bg-rose-gradient rounded-full mb-6" />
                         <p className="font-poppins text-gray-500 text-sm leading-relaxed mb-8">
-                            Based in Bangalore, we serve Koramangala, Indiranagar, Whitefield, and across Karnataka.
-                            Whether you're planning a birthday bash, a fairy-tale wedding, or a sweet baby shower — we're here to help.
+                            Birthday party specialists serving Koramangala, Indiranagar, Whitefield & all of Bangalore.
+                            Kids parties, 1st birthdays, milestone celebrations — share your vision and we'll make it happen.
                         </p>
 
                         {/* Contact Cards */}

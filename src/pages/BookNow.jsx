@@ -138,8 +138,8 @@ const BookNow = () => {
                     <AnimatedSection>
                     <SectionTitle
                         tag="Get Started"
-                        title="Book Your Dream Event"
-                        subtitle="Fill in the details below and our team will reach out within 24 hours. We serve Bangalore and nearby areas."
+                        title="Book Your Birthday Party"
+                        subtitle="Fill the form for a FREE custom quote. We reply within 24 hours. No commitment — just ideas & transparent pricing."
                     />
                     </AnimatedSection>
                 </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const WHATSAPP_URL = 'https://wa.me/919971054664';
-const WHATSAPP_MSG = 'Hi! I\'m interested in event decoration. Can you help?';
+const WHATSAPP_MSG = 'Hi! I\'m interested in birthday party decoration. Can you share a quote?';
 
 /**
  * WhatsAppFloating — Sticky WhatsApp button, always visible
