@@ -47,13 +47,13 @@ const ThemeDetails = () => {
     return (
         <div className="pt-20 min-h-screen bg-white">
             {/* Breadcrumb */}
-            <div className="bg-blush border-b border-blush-dark">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-2 text-sm font-poppins">
-                    <Link to="/" className="text-gray-400 hover:text-rose-gold-dark transition-colors">Home</Link>
-                    <span className="text-gray-300">/</span>
-                    <Link to="/gallery" className="text-gray-400 hover:text-rose-gold-dark transition-colors">Gallery</Link>
-                    <span className="text-gray-300">/</span>
-                    <span className="text-charcoal font-medium truncate max-w-xs">{theme.title}</span>
+            <div className="bg-blush border-b border-blush-dark overflow-x-auto">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-2 text-xs sm:text-sm font-poppins min-w-0">
+                    <Link to="/" className="text-gray-400 hover:text-rose-gold-dark transition-colors whitespace-nowrap">Home</Link>
+                    <span className="text-gray-300 flex-shrink-0">/</span>
+                    <Link to="/gallery" className="text-gray-400 hover:text-rose-gold-dark transition-colors whitespace-nowrap">Gallery</Link>
+                    <span className="text-gray-300 flex-shrink-0">/</span>
+                    <span className="text-charcoal font-medium truncate">{theme.title}</span>
                 </div>
             </div>
 

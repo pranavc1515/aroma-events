@@ -74,13 +74,15 @@ const Contact = () => {
     return (
         <div className="pt-20 min-h-screen bg-white">
             {/* Header */}
-            <div className="bg-blush py-16">
+            <div className="bg-blush py-12 sm:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <SectionTitle
-                        tag="Get In Touch"
-                        title="Let's Talk About Your Event"
-                        subtitle="Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible."
-                    />
+                    <AnimatedSection>
+                        <SectionTitle
+                            tag="Get In Touch"
+                            title="Let's Talk About Your Event"
+                            subtitle="Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+                        />
+                    </AnimatedSection>
                 </div>
             </div>
 
